@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-md navbar-inverse  bg-dark bg-inverse navbar-static-top">
+    <%= link_to "Registration", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbarLg">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse" id="collapsingNavbarLg">
+      <ul class="navbar-nav ml-auto">
+        <% if !user_signed_in? %>
+          <li class="nav-item">
+            <div class="navbar-link">
+              <%= link_to new_user_session_path, class: "nav-link" do %>
+                Log In <span class="sr-only">(current)</span>
+              <% end %>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="navbar-link">
+              <%= link_to new_user_registration_path, class: "nav-link" do %>
+                Sign Up <span class="sr-only">(current)</span>
+              <% end %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <div class="img-rounded inset">
+                <%= image_tag ( "#{current_user.image}") %>
+              </div>
+              <%= current_user.email %> <span class="caret"></span>
+            </a>
+
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><%= link_to "Edit Profile", edit_user_registration_path %></li>
+              <li role="dropdown-item separator" class="divider"></li>
+              <li class="dropdown-item"><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
+        <% end %>
+        </ul>
+    </div>
+</nav>
