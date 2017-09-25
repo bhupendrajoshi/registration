@@ -1,2 +1,11 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="row">
+  <% if !user_signed_in? %>
+    Please sign in!
+  <% else %>
+    <% if @needs_payment %>
+     <%= link_to "Please pay", new_charge_path, class: "btn btn-primary" %>
+    <% else %>
+      Thank you for the payment!
+    <% end %>
+  <% end %>
+</div>
