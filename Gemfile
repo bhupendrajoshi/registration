@@ -59,5 +59,6 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'gravatar_image_tag'
 gem 'figaro'
+gem 'stripe'
 
 ruby "2.4.1"
